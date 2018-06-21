@@ -1,6 +1,8 @@
-Ôªø
+
 # FridgeFreezerMonitor
+
 ![Results 2](https://i.imgur.com/K6dCP83.jpg?1)
+
 _Room temperature demonstration of prototype during judging._
 
 
@@ -58,18 +60,19 @@ This provides a good starting point for future improvements.
 
 ## Design
 ### Block Diagram
+
 ![Block Diagram](https://i.imgur.com/k1LHCSa.png)
-<![endif]-->
+
 
 ### Hardware
 
 #### LCD
 
-In order to give the user feedback regarding the state of the system, we connected a Nokia 5110 LCD to port A (as per Valvano‚Äôs driver) of the receiver Tiva board to use to output the current ambient temperature of the thermistor.
+In order to give the user feedback regarding the state of the system, we connected a Nokia 5110 LCD to port A (as per Valvanoís driver) of the receiver Tiva board to use to output the current ambient temperature of the thermistor.
 
 #### 7 Segment Display
 
-Because of a problem relating to the system clock, part way through the project development we could no longer get the Nokia LCD to display the appropriate output. As such, we considered the alternative of using two common anode 7 segment displays to display the temperature data instead. We built a test circuit for the displays by connecting each cathode to port B of the Tiva board through 220Œ© resistors, while the common anode pins were each connected to the emitter pin of a BJT transistor. We ran 5V from the Tiva clock bus to the collector pins and we connected two pins on port A to the base pins of the transistors to trigger the switching. We then proceeded to write drivers to control these displays through multiplexing. Ultimately, however, we were able to solve the clock issue and we migrated back to the LCD for the sake simplicity and modularity, should we ever want to add more visual output to the system.
+Because of a problem relating to the system clock, part way through the project development we could no longer get the Nokia LCD to display the appropriate output. As such, we considered the alternative of using two common anode 7 segment displays to display the temperature data instead. We built a test circuit for the displays by connecting each cathode to port B of the Tiva board through 220? resistors, while the common anode pins were each connected to the emitter pin of a BJT transistor. We ran 5V from the Tiva clock bus to the collector pins and we connected two pins on port A to the base pins of the transistors to trigger the switching. We then proceeded to write drivers to control these displays through multiplexing. Ultimately, however, we were able to solve the clock issue and we migrated back to the LCD for the sake simplicity and modularity, should we ever want to add more visual output to the system.
 
 #### Door Switch
 
@@ -77,7 +80,7 @@ The switch used to simulate the door opening and closing is a dpst push button w
 
 #### Thermistor
 
-In order to measure temperature, we purchased a negative temperature coefficient thermistor from the IEEE chapter at Chico. Unfortunately, the component did not have a data sheet or any markings to indicate its type or characteristics. We decided to use the component anyways and went to work characterizing it. We determined how its resistance relates to temperature (see ADC and Thermistor Characterization under Development Plan) and connected it in a voltage divider with a reference resistor to generate a predictable voltage, which we collect with the Tiva‚Äôs ADC.
+In order to measure temperature, we purchased a negative temperature coefficient thermistor from the IEEE chapter at Chico. Unfortunately, the component did not have a data sheet or any markings to indicate its type or characteristics. We decided to use the component anyways and went to work characterizing it. We determined how its resistance relates to temperature (see ADC and Thermistor Characterization under Development Plan) and connected it in a voltage divider with a reference resistor to generate a predictable voltage, which we collect with the Tivaís ADC.
 
 ##### Considerations for future iterations
 
@@ -85,7 +88,7 @@ Thermocouples provide a significantly faster response time and create a voltage 
 
 #### DAC and Sound Output
 
-Since we wanted to sound an alarm in the event that the internal refrigerator temperature gets too warm or if the door is left open, we needed a method to produce sound. We did this by using a 5-bit DAC connected to a powered speaker through a conventional 3.5mm jack plug. In order to drop the output voltages we used resistor values of 1.5kŒ©, 3kŒ©, 6kŒ©, 12kŒ©, and 24kŒ©.
+Since we wanted to sound an alarm in the event that the internal refrigerator temperature gets too warm or if the door is left open, we needed a method to produce sound. We did this by using a 5-bit DAC connected to a powered speaker through a conventional 3.5mm jack plug. In order to drop the output voltages we used resistor values of 1.5k?, 3k?, 6k?, 12k?, and 24k?.
 
 ### Software
 
@@ -109,17 +112,18 @@ The UART initialization function allows us to specify the port and pin number, t
 
 ##### Considerations for future iterations
 
-We could have used the normal path for initialization in which specific registers are hard coded into the initialization. This has the advantage of being fast in initialization as well as easy to read for code maintenance of the initializing functions, but initialization time is not a concern for this product. Instead, generalized initialization allows for faster development and turnaround time, reduces the frequency of programmer error, and much less time is spent bug-fixing when a pin change is deemed necessary. The tradeoff makes it worth implementing generalized initializations for other peripherals, but only when the next big ‚Äústrange bug‚Äù is encountered.
+We could have used the normal path for initialization in which specific registers are hard coded into the initialization. This has the advantage of being fast in initialization as well as easy to read for code maintenance of the initializing functions, but initialization time is not a concern for this product. Instead, generalized initialization allows for faster development and turnaround time, reduces the frequency of programmer error, and much less time is spent bug-fixing when a pin change is deemed necessary. The tradeoff makes it worth implementing generalized initializations for other peripherals, but only when the next big ìstrange bugî is encountered.
 
 #### Tiva 1 (Sensor unit)
 
 The goal for communication to the interface unit is to send 7 bits of temperature data in Fahrenheit and 1 bit of alarm request. The goal internal to the sensor unit, therefore, is to continually update the status of the fridge monitor with regards to the state of the door and the internal temperature of the fridge.
+
 ![Finite state machine model](https://i.imgur.com/KriGl3o.png)
-<![endif]-->
+
 
 ##### Main Program
 
-The software is implemented as a simple state machine with three states: DOOR_CLOSED and DOOR_OPEN, in which the alarm bit is cleared, and DOOR_OPEN_ALARM in which the alarm bit is set, indicating the door has been left open. The main loop of the program handles the current state and checks the conditions for transitioning to its other states, such as whether the door has been opened or closed or whether the door has been open for more than a specified time interval. The way the state machine checks the time elapsed is by reading a counter variable which is incremented by the SysTick periodic interrupt at 5 Hz. At 25 counts threshold, the time from the door being open to the alarm being requested is 5 ¬± 0.2 seconds.
+The software is implemented as a simple state machine with three states: DOOR_CLOSED and DOOR_OPEN, in which the alarm bit is cleared, and DOOR_OPEN_ALARM in which the alarm bit is set, indicating the door has been left open. The main loop of the program handles the current state and checks the conditions for transitioning to its other states, such as whether the door has been opened or closed or whether the door has been open for more than a specified time interval. The way the state machine checks the time elapsed is by reading a counter variable which is incremented by the SysTick periodic interrupt at 5 Hz. At 25 counts threshold, the time from the door being open to the alarm being requested is 5 ± 0.2 seconds.
 
 The state machine uses two LEDs onboard the Tiva. If the state machine reads the door as open, it turns on the red LED (PF1). This is intended as a user interface on the fridge itself, so that the user can see when the door is reading as open or closed. If the state machine is setting the alarm bit, it turns on the green LED (PF3). We included this as debug functionality.
 
@@ -131,7 +135,7 @@ Lastly, the main loop sends both the most recent temperature data and the alarm 
 
 ##### Thermistor
 
-Since the thermistor is an analog device, we must use one of the Tiva‚Äôs onboard ADC units. To set this up, we initialize ADC0 to channel Ain1 on pin PE2, and then we initialize SysTick with periodic interrupts at 5 Hz. Every SysTick interrupt request, we take an ADC reading. When the ADC is finished, it stores the result in a global variable to be retrieved by the main program, and sets a flag that new data is available.
+Since the thermistor is an analog device, we must use one of the Tivaís onboard ADC units. To set this up, we initialize ADC0 to channel Ain1 on pin PE2, and then we initialize SysTick with periodic interrupts at 5 Hz. Every SysTick interrupt request, we take an ADC reading. When the ADC is finished, it stores the result in a global variable to be retrieved by the main program, and sets a flag that new data is available.
 
 While the ADC is reading, we turn on the onboard blue LED (PF2) to enable heartbeat debugging. Since the ADC takes some appreciable time and the frequency is low enough to be visible to human vision, we can then ensure that the ADC is generating input by visibly seeing the blue LED flicker at some low duty cycle.
 
@@ -139,14 +143,17 @@ SysTick also increments a global counter variable. We use this as a general purp
 
 ##### Temperature Conversion
 
-For demonstration purposes, we implemented a linear fit between ADC sample and degrees farenheit on the range of 52¬∞F to 90¬∞F.
+For demonstration purposes, we implemented a linear fit between ADC sample and degrees farenheit on the range of 52∞F to 90∞F.
 
 The table below is a subset of the linear fit data. For the full data set, see ADC and Thermistor Characterization under Development Plan.
+
 ![Table 1](https://i.imgur.com/ymNDbwK.png)
-Here voltage is the voltage calculated by the voltage divider equation with a resistor we tested at 981.5 Œ©. For more information, see the full data set and procedure in ADC and Thermistor Characterization under Development Plan.
+
+Here voltage is the voltage calculated by the voltage divider equation with a resistor we tested at 981.5 ?. For more information, see the full data set and procedure in ADC and Thermistor Characterization under Development Plan.
 
 ##### UART Transmission
 For a passive temperature sensor, the accuracy of the reading at the immediate time is of more importance than every single reading being sent. For this reason, we decided our transmit function to only transmit data if the UART is currently idle. The way it does this is upon being called by the main program (and accepting temperature data and alarm request), it checks if the transmit FIFO is empty, and if so, it formulates a unsigned 8-bit integer with the lower 7 bits temperature in Fahrenheit and the most significant bit, and then writes this data package to the FIFO. If the FIFO is not empty, then the previous data has not yet been sent, and so it exits, discarding the data. Since the bus speed runs at 80 MHz and the frequency of new ADC readings is only 5 Hz, the same data is inevitably repeatedly sent anyway even in this lazy transmission model. But more importantly, by sending only the most recent data, there is less time lag between the reading of the data by the sensor unit and display of the data by the interface unit.
+
 ![UART Tx flowchart](https://i.imgur.com/M3nlo3r.png)
 
 ##### Door Switch
@@ -165,11 +172,11 @@ In future iterations, the green LED debug function for the door open alarm state
 
 The decision for SysTick to have double-duty in both triggering ADC samples and acting as a general purpose timer for the open door alarm state violates the single responsibility principle in good software design and can introduce problems if, for example, the ADC sampling rate is changed. By only using one timer, however, this reduces energy consumption and simplifies the project in the sense that it reduces likelihood of programmer error in total system integration.
 
-The largest limitation of this implementation is the fact that the temperature is an unsigned value, and so cannot handle values below 0¬∞F. If temperatures below 0¬∞F are needed, one possible implementation that uses 7 bits as currently is using a biased temperature, i.e., set 0 to correspond to -50¬∞F and the max value of 127 shall then refer to 77¬∞F and above, which is clearly outside the refrigerator functioning range and should therefore be more than sufficient to handle both refrigerators and freezers.
+The largest limitation of this implementation is the fact that the temperature is an unsigned value, and so cannot handle values below 0∞F. If temperatures below 0∞F are needed, one possible implementation that uses 7 bits as currently is using a biased temperature, i.e., set 0 to correspond to -50∞F and the max value of 127 shall then refer to 77∞F and above, which is clearly outside the refrigerator functioning range and should therefore be more than sufficient to handle both refrigerators and freezers.
 
 The linear fit we used is only appropriate in the room temperature range, and the thermistor characterization has nonlinear resistance with temperature especially outside of room temperature range, and so for future iterations the temperature conversion needs to be changed from a linear calculation to a 2nd- or 3rd-order polynomial at least. The Steinhart test mentioned in ADC and Thermistor Characterization under Development Plan, while potentially accurate, uses a logarithmic function, which has the added complexity of needing double precision data types in order to use the math.h standard library functions. As our microcontroller was hard-faulting on any attempt to use double type, we abandoned this approach in favor of implementing a simple linear model for demonstration and proof of concept. Should the double implementation be refactored and made to work, however, it could produce accurate results.
 
-The decision to put the alarm request and the temperature data in the same frame has both advantages and drawbacks. The drawback is that it‚Äôs a less readily understood by any developer working with the interfacing device. The advantage is that every UART frame means the same thing. One alternative, by contrast, would be to send the alarm request in one frame and then the temperature in another frame, but this would drastically increase the complexity of communication. If there‚Äôs one clear viable alternative, it is that the alarm status might not be determined by the sensor unit, but instead by the interface unit. This reduces the sensor unit to have the single responsibility of collecting and transmitting data. The complication in this alternative is that the sensor unit would also have to transmit the door open or closed state in order for the time-based alarm for the door being left open to be determined by the interface unit, so the issue of multiple data needing to be sent per frame would not actually be solved, but this alternative may still be preferable as it allows the interface to be the sole point of configurability of thresholds when this feature is implemented, while maintaining the simplicity of simplex communication.
+The decision to put the alarm request and the temperature data in the same frame has both advantages and drawbacks. The drawback is that itís a less readily understood by any developer working with the interfacing device. The advantage is that every UART frame means the same thing. One alternative, by contrast, would be to send the alarm request in one frame and then the temperature in another frame, but this would drastically increase the complexity of communication. If thereís one clear viable alternative, it is that the alarm status might not be determined by the sensor unit, but instead by the interface unit. This reduces the sensor unit to have the single responsibility of collecting and transmitting data. The complication in this alternative is that the sensor unit would also have to transmit the door open or closed state in order for the time-based alarm for the door being left open to be determined by the interface unit, so the issue of multiple data needing to be sent per frame would not actually be solved, but this alternative may still be preferable as it allows the interface to be the sole point of configurability of thresholds when this feature is implemented, while maintaining the simplicity of simplex communication.
 
 The main loop currently maintains its state for many cycles before changing to a new state, and repeat data is sent over the communication wire, which is not energy efficient. A change that should be made in future iterations is moving to a completely interrupt-based system using SysTick periodic interrupts to take the ADC sample, do any processing, and transmit the data. This will enable the interstice to run in a low-power wait mode.
 
@@ -183,6 +190,7 @@ When new data is available, it is read and processed.
 
  - The alarm request bit (bit 7) is read and the alarm is turned on or off accordingly.
  - The temperature data (bits 0-6)  is written to the LCD as a decimal number with a degF unit specifier.
+
 ![enter image description here](https://i.imgur.com/Dkj8W2F.png)
 
 #### Alarm
@@ -194,12 +202,12 @@ The table consists of 128 values from 0-31 approximating one period of a sine wa
 When AlarmOn is called, the SysTick reload value is reset to 1419, producing the 56.320 KHz. The outmask is also reset to allow all DAC bits to pass through.
 
 When AlarmOff is called, the maximum reload value for SysTick is set and the outmask is set to 0. This forces each DAC output to be zero.
+
 ![DAC flowchart](https://i.imgur.com/dz7MSHE.png)
 
 #### LCD
 
 The LCD uses the supplied Nokia 5110 library.
-<![endif]-->
 
 #### Considerations for future iterations
 
@@ -215,21 +223,26 @@ All parts not provided in class (such as the Nokia LCD, 3.5mm jack plug, and res
 
 #### Thermistor circuit
 
-In order to use the thermistor as a temperature sensor, we could have used two primary circuits; either we could use the variable resistive properties of the thermistor to short a circuit path to trigger an input when temperature exceeded a predetermined value (since the thermistor resistance decreases with rising temperature), or we could use a voltage divider to generate a predictable voltage in a range as the temperature changes. The latter involves using the Tiva‚Äôs ADC to collect data rather than simply using a ‚Äúboolean‚Äù GPIO input pin, but allows us to give the user more feedback regarding the system.
+In order to use the thermistor as a temperature sensor, we could have used two primary circuits; either we could use the variable resistive properties of the thermistor to short a circuit path to trigger an input when temperature exceeded a predetermined value (since the thermistor resistance decreases with rising temperature), or we could use a voltage divider to generate a predictable voltage in a range as the temperature changes. The latter involves using the Tivaís ADC to collect data rather than simply using a ìbooleanî GPIO input pin, but allows us to give the user more feedback regarding the system.
 
 #### 7 segment display circuit
 
 Since the temperatures we sought to display were all two digit decimal values (though an actual installed unit could manage with one digit numbers if measuring in Celsius), we needed a way to drive at least two 7 segment displays. Instead using at least 14 pins on the Tiva board, it made more sense to only use 9 and multiplex the displays, that is alternate displaying data on one, then the other, at a rate faster than humans can perceive, such that both displays appear to be on. In order to do this, the selection pins on each of the 7 segment displays are tied together and sent data. Then the common anode of one display is sent a signal while the anode of the other display is pulled to ground. This anode switching behavior is accomplished using two BJT transistors (though MOSFETS have better switching performance, I believe it would be negligible in this context). The transistors are just toggled between the on and off states (it should not matter if the transistor is in the saturation region or the forward active region since all of the collector current will be directed to the emitter path in the circuit) to power each LED array one at a time.
 
 #### ADC and Thermistor Characterization
+
 ![Characterization processes](https://i.imgur.com/hfiCGIh.jpg)
 
-We did not have a data sheet for the thermistor we used. In order to characterize the thermistor, we used a beaker of water and a thermometer, and starting from ice water, took periodic measurements as the water warmed. Once the water reached room temperature (about 25¬∞C), the beaker was emptied and refilled with boiling water. We waited for the temperature to lower well below 100¬∞C to protect the insulation (hot glue, with a melting point near 120¬∞C) that kept the thermistor from shorting in the water. Measurements were then periodically taken until the water settled at room temperature once again.
+We did not have a data sheet for the thermistor we used. In order to characterize the thermistor, we used a beaker of water and a thermometer, and starting from ice water, took periodic measurements as the water warmed. Once the water reached room temperature (about 25∞C), the beaker was emptied and refilled with boiling water. We waited for the temperature to lower well below 100∞C to protect the insulation (hot glue, with a melting point near 120∞C) that kept the thermistor from shorting in the water. Measurements were then periodically taken until the water settled at room temperature once again.
+
 ![All thermistor characterization data](https://i.imgur.com/sXX1nSi.png)
 
 This data was analyzed on a spreadsheet program, but the best-fit curve approximation was too high of an order to be useful. Instead we used a common thermistor equation, a simplified form of the Steinhart-Hart equation 
+
 ![Steinhart-Hart equation](https://i.imgur.com/pGP3VOk.png)
+
 , where _A, B, C_ are experimentally determined coefficients that tend to be small and require high precision. This relationship gave a much closer approximation at a considerably lower order. Unfortunately, we encountered errors dealing with the doubles needed to store the Steinhart coefficients, so we instead took a small operating region and created a linear model to use for ADC conversion. The following MatLab plot demonstrates the accuracy of the various approximations.
+
 ![Thermistor characterization](https://i.imgur.com/nLJTyby.png)
 
 
@@ -253,7 +266,7 @@ These errors were caught during simulator debugging before causing any significa
 
 The steinhart test module, using a natural log, required, in its simplest possible implementation, using double precision floating point data type. We attempted implementing it this way, but every time the software ran on the board it would hard fault the first time it entered the temperature conversion function. Hypothesizing that double floating point type was the cause of the hard fault, we decided to postpone implementation of the Steinhart test model and try to find a linear model for demonstration purposes.
 
-For demonstration, it was assumed we would be testing the device under room temperature conditions, and so we found a linear fit on the range of 52¬∞F to 90¬∞F using the LINEST function of google sheets, comparing measured degrees Fahrenheit versus theoretical ADC sample based on measured resistance and computed voltage across a voltage divider. Of the 39 data points we had in this range, only one conversion had an error greater than 3% between the measured temperature and the modelled temperature, and we believe this is due to measurement error.
+For demonstration, it was assumed we would be testing the device under room temperature conditions, and so we found a linear fit on the range of 52∞F to 90∞F using the LINEST function of google sheets, comparing measured degrees Fahrenheit versus theoretical ADC sample based on measured resistance and computed voltage across a voltage divider. Of the 39 data points we had in this range, only one conversion had an error greater than 3% between the measured temperature and the modelled temperature, and we believe this is due to measurement error.
 
 The LINEST function returned the line
 
@@ -276,6 +289,7 @@ We also found that hard faults were being caused by, or, at least, being resolve
 At one point, we were reading strange values from the UART communication before realizing there was not a common ground at that point. Upon reconnecting the common ground, UART worked as expected.
 
 ### First Iteration results
+
 ![Results 1](https://i.imgur.com/GpXwfIB.jpg)
 
 ![Results 2](https://i.imgur.com/K6dCP83.jpg?1)
@@ -284,9 +298,9 @@ At one point, we were reading strange values from the UART communication before 
 
 The fact that our major issues were caused by internal behavior of the Tiva rather than problems we injected into the product ourselves emphasizes the need for fail-fast development and it highlights the value of tools that can enable rapid turnaround upon failure and assist in debugging. It also highlights that modules sharing clocks and other features of the board must represent a common problem in developing embedded systems. 
 
-Other than this, the only new thing about this project for us was UART communication, which we didn‚Äôt have any problems with directly. 
+Other than this, the only new thing about this project for us was UART communication, which we didnít have any problems with directly. 
 
-The first improvement of this product is a more appropriate thermistor that more accurately reads temperature at the -10¬∞F to 50¬∞F range and with less noise. Using a better thermistor, we could then accurately characterize it using a polynomial model, or by finding a way to implement the Steinhart test model to calculate temperature. Related to this, by taking the temperature data to a bias, we can represent negative values. 
+The first improvement of this product is a more appropriate thermistor that more accurately reads temperature at the -10∞F to 50∞F range and with less noise. Using a better thermistor, we could then accurately characterize it using a polynomial model, or by finding a way to implement the Steinhart test model to calculate temperature. Related to this, by taking the temperature data to a bias, we can represent negative values. 
 
 The next most useful change to make to this product in order to bring it to salable status is configurability of thresholds. This might best be accomplished by moving the threshold comparison to the interface unit and have the interface unit accept configuration by the user. This would mean the data package can be 7 bits of temperature data and 1 bit of door status instead of the high bit being an alarm request, and doing it this way maintains simplex communication. 
 
