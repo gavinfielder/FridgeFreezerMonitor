@@ -1,0 +1,63 @@
+// uart.c
+// Contains definitions for UART functions
+// Runs on TM4C123
+// Program written by: Gavin Fielder
+// Date Created: 
+// Last Modified:
+// Hardware connections:
+
+
+#include "stdint.h"
+#include "tm4c123gh6pm.h"
+
+//Initializes UART transmission on PE5
+//baud rate 9600 at 80 MHz clock
+void UART_Init(void) {
+    
+    int delay;
+    unsigned int portC_using = 0x40;
+    
+    //Send clock signals
+    SYSCTL_RCGCUART_R |= 0x8; //Enable UART3 clock
+    for (delay = 0; delay < 100; delay++);
+    SYSCTL_RCGCGPIO_R |= 0x4; //Enable GPIO Port C clock
+    for (delay = 0; delay < 10; delay++);
+    
+    //Initialize PC6 as input
+    GPIO_PORTC_DIR_R &= ~portC_using; //clear bit (input)
+    GPIO_PORTC_AFSEL_R |= portC_using; //set bit 
+    GPIO_PORTC_AMSEL_R &= ~portC_using; //clear bit 
+    GPIO_PORTC_DEN_R |= portC_using; //set bit 
+    GPIO_PORTC_PCTL_R = 1<<24; //selects UART3 alternate function
+    
+    //Initialize UART3
+    UART3_CTL_R &= ~0x01; //disable during setup
+    UART3_IBRD_R = 520; //integer part of baud rate clock divisor
+    UART3_FBRD_R = 53; //fraction part of baud rate clock divisor
+    UART3_LCRH_R = 0x70; //enable FIFO and set word length to 8
+    UART3_CC_R = 0; //select system clock source
+    UART3_CTL_R |= 0x01; //enable UART
+
+}
+
+//Returns 1 if data exists in FIFO, 0 otherwise
+uint8_t UART_NewDataAvailable() {
+    if ((UART3_FR_R & 0x10) == 0) {
+        //FIFO NOT empty. Return 1 for new data detected
+        return 1;
+    }
+    else return 0;
+}
+
+//Extracts data from FIFO
+uint8_t UART_Read(void) {
+    return UART3_DR_R&0xFF;
+
+}
+
+char UART_Char_In(void) {
+    while((UART3_FR_R&UART_FR_RXFE) != 0){};
+    return((char)(UART3_DR_R&0xFF));
+}
+
+

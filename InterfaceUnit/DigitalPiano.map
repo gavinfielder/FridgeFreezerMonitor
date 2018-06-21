@@ -1,0 +1,497 @@
+Component: ARM Compiler 5.06 update 5 (build 528) Tool: armlink [4d35e2]
+
+==============================================================================
+
+Section Cross References
+
+    startup.o(STACK) refers (Special) to heapauxi.o(.text) for __use_two_region_memory
+    startup.o(HEAP) refers (Special) to heapauxi.o(.text) for __use_two_region_memory
+    startup.o(RESET) refers (Special) to heapauxi.o(.text) for __use_two_region_memory
+    startup.o(RESET) refers to startup.o(STACK) for StackMem
+    startup.o(RESET) refers to alarm.o(i.SysTick_Handler) for SysTick_Handler
+    startup.o(RESET) refers to lab5.o(i.__main) for __main
+    startup.o(.text) refers (Special) to heapauxi.o(.text) for __use_two_region_memory
+    startup.o(.text) refers to startup.o(HEAP) for HeapMem
+    startup.o(.text) refers to startup.o(STACK) for StackMem
+    lab5.o(i.__main) refers to _printf_percent.o(.ARM.Collect$$_printf_percent$$00000000) for _printf_percent
+    lab5.o(i.__main) refers to _printf_u.o(.ARM.Collect$$_printf_percent$$0000000A) for _printf_u
+    lab5.o(i.__main) refers to _printf_dec.o(.text) for _printf_int_dec
+    lab5.o(i.__main) refers to startup.o(.text) for DisableInterrupts
+    lab5.o(i.__main) refers to uart.o(i.UART_Init) for UART_Init
+    lab5.o(i.__main) refers to nokia5110.o(i.Nokia5110_Init) for Nokia5110_Init
+    lab5.o(i.__main) refers to pll.o(i.PLL_Init) for PLL_Init
+    lab5.o(i.__main) refers to alarm.o(i.InitializeAlarm) for InitializeAlarm
+    lab5.o(i.__main) refers to nokia5110.o(i.Nokia5110_SetCursor) for Nokia5110_SetCursor
+    lab5.o(i.__main) refers to nokia5110.o(i.Nokia5110_Clear) for Nokia5110_Clear
+    lab5.o(i.__main) refers to alarm.o(i.AlarmOn) for AlarmOn
+    lab5.o(i.__main) refers to nokia5110.o(i.Nokia5110_OutString) for Nokia5110_OutString
+    lab5.o(i.__main) refers to uart.o(i.UART_NewDataAvailable) for UART_NewDataAvailable
+    lab5.o(i.__main) refers to uart.o(i.UART_Read) for UART_Read
+    lab5.o(i.__main) refers to alarm.o(i.AlarmOff) for AlarmOff
+    lab5.o(i.__main) refers to noretval__2sprintf.o(.text) for __2sprintf
+    uart.o(i.UART_Init) refers to friendlywriter.o(i.FriendlyWrite) for FriendlyWrite
+    uart.o(i.UART_Init) refers to friendlywriter.o(i.Write) for Write
+    uart.o(i.UART_Init) refers to friendlywriter.o(.constdata) for GPIO_BASE
+    uart.o(i.UART_Init) refers to uart.o(.constdata) for UART_BASE
+    uart.o(i.UART_Init) refers to uart.o(.data) for selected_UART
+    uart.o(i.UART_NewDataAvailable) refers to friendlywriter.o(i.Read) for Read
+    uart.o(i.UART_NewDataAvailable) refers to uart.o(.constdata) for UART_BASE
+    uart.o(i.UART_NewDataAvailable) refers to uart.o(.data) for selected_UART
+    uart.o(i.UART_Read) refers to friendlywriter.o(i.Read) for Read
+    uart.o(i.UART_Read) refers to uart.o(.constdata) for UART_BASE
+    uart.o(i.UART_Read) refers to uart.o(.data) for selected_UART
+    uart.o(i.UART_TransmitIfIdle) refers to friendlywriter.o(i.Read) for Read
+    uart.o(i.UART_TransmitIfIdle) refers to uart.o(.constdata) for UART_BASE
+    uart.o(i.UART_TransmitIfIdle) refers to uart.o(.data) for selected_UART
+    nokia5110.o(i.Nokia5110_Clear) refers to nokia5110.o(i.lcdwrite) for lcdwrite
+    nokia5110.o(i.Nokia5110_Clear) refers to nokia5110.o(i.Nokia5110_SetCursor) for Nokia5110_SetCursor
+    nokia5110.o(i.Nokia5110_DrawFullImage) refers to nokia5110.o(i.Nokia5110_SetCursor) for Nokia5110_SetCursor
+    nokia5110.o(i.Nokia5110_DrawFullImage) refers to nokia5110.o(i.lcdwrite) for lcdwrite
+    nokia5110.o(i.Nokia5110_Init) refers to nokia5110.o(i.lcdwrite) for lcdwrite
+    nokia5110.o(i.Nokia5110_OutChar) refers to nokia5110.o(i.lcdwrite) for lcdwrite
+    nokia5110.o(i.Nokia5110_OutChar) refers to nokia5110.o(.constdata) for ASCII
+    nokia5110.o(i.Nokia5110_OutString) refers to nokia5110.o(i.Nokia5110_OutChar) for Nokia5110_OutChar
+    nokia5110.o(i.Nokia5110_OutUDec) refers to nokia5110.o(i.Nokia5110_OutString) for Nokia5110_OutString
+    nokia5110.o(i.Nokia5110_OutUDec) refers to nokia5110.o(i.Nokia5110_OutChar) for Nokia5110_OutChar
+    nokia5110.o(i.Nokia5110_SetCursor) refers to nokia5110.o(i.lcdwrite) for lcdwrite
+    alarm.o(i.AlarmOff) refers to alarm.o(.data) for outmask
+    alarm.o(i.AlarmOn) refers to alarm.o(.data) for outmask
+    alarm.o(i.SysTick_Handler) refers to alarm.o(i.DAC_Out) for DAC_Out
+    alarm.o(i.SysTick_Handler) refers to alarm.o(.constdata) for SineWave
+    alarm.o(i.SysTick_Handler) refers to alarm.o(.data) for next
+    __2sprintf.o(.text) refers to _printf_char_common.o(.text) for _printf_char_common
+    __2sprintf.o(.text) refers to _sputc.o(.text) for _sputc
+    noretval__2sprintf.o(.text) refers to _printf_char_common.o(.text) for _printf_char_common
+    noretval__2sprintf.o(.text) refers to _sputc.o(.text) for _sputc
+    __printf.o(.text) refers to _printf_percent.o(.ARM.Collect$$_printf_percent$$00000000) for _printf_percent
+    _printf_dec.o(.text) refers to _printf_intcommon.o(.text) for _printf_int_common
+    __printf_flags.o(.text) refers to _printf_percent.o(.ARM.Collect$$_printf_percent$$00000000) for _printf_percent
+    __printf_flags.o(.text) refers to __printf_flags.o(.constdata) for .constdata
+    __printf_ss.o(.text) refers to _printf_percent.o(.ARM.Collect$$_printf_percent$$00000000) for _printf_percent
+    __printf_flags_ss.o(.text) refers to _printf_percent.o(.ARM.Collect$$_printf_percent$$00000000) for _printf_percent
+    __printf_flags_ss.o(.text) refers to __printf_flags_ss.o(.constdata) for .constdata
+    __printf_wp.o(.text) refers to __printf_wp.o(i._is_digit) for _is_digit
+    __printf_wp.o(.text) refers to _printf_percent.o(.ARM.Collect$$_printf_percent$$00000000) for _printf_percent
+    __printf_flags_wp.o(.text) refers to __printf_wp.o(i._is_digit) for _is_digit
+    __printf_flags_wp.o(.text) refers to _printf_percent.o(.ARM.Collect$$_printf_percent$$00000000) for _printf_percent
+    __printf_flags_wp.o(.text) refers to __printf_flags_wp.o(.constdata) for .constdata
+    __printf_ss_wp.o(.text) refers to __printf_wp.o(i._is_digit) for _is_digit
+    __printf_ss_wp.o(.text) refers to _printf_percent.o(.ARM.Collect$$_printf_percent$$00000000) for _printf_percent
+    __printf_flags_ss_wp.o(.text) refers to __printf_wp.o(i._is_digit) for _is_digit
+    __printf_flags_ss_wp.o(.text) refers to _printf_percent.o(.ARM.Collect$$_printf_percent$$00000000) for _printf_percent
+    __printf_flags_ss_wp.o(.text) refers to __printf_flags_ss_wp.o(.constdata) for .constdata
+    _printf_u.o(.ARM.Collect$$_printf_percent$$0000000A) refers (Weak) to _printf_dec.o(.text) for _printf_int_dec
+    _printf_percent.o(.ARM.Collect$$_printf_percent$$00000000) refers (Special) to _printf_percent_end.o(.ARM.Collect$$_printf_percent$$00000017) for _printf_percent_end
+    _printf_char_common.o(.text) refers to __printf.o(.text) for __printf
+
+
+==============================================================================
+
+Removing Unused input sections from the image.
+
+    Removing lab5.o(.constdata), (480 bytes).
+    Removing uart.o(i.UART_TransmitIfIdle), (60 bytes).
+    Removing nokia5110.o(i.Nokia5110_DrawFullImage), (34 bytes).
+    Removing nokia5110.o(i.Nokia5110_OutUDec), (412 bytes).
+
+4 unused section(s) (total 986 bytes) removed from the image.
+
+==============================================================================
+
+Image Symbol Table
+
+    Local Symbols
+
+    Symbol Name                              Value     Ov Type        Size  Object(Section)
+
+    RESET                                    0x00000000   Section      644  startup.o(RESET)
+    ../clib/heapaux.c                        0x00000000   Number         0  heapauxi.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  __printf_flags_ss.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  __printf_ss.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  __printf_flags.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  _printf_dec.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  __printf.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  noretval__2sprintf.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  _printf_intcommon.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  __2sprintf.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  __printf_nopercent.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  _sputc.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  _printf_char_common.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  __printf_flags_ss_wp.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  __printf_ss_wp.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  __printf_flags_wp.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  __printf_wp.o ABSOLUTE
+    ../clib/printf_percent.s                 0x00000000   Number         0  _printf_percent_end.o ABSOLUTE
+    ../clib/printf_percent.s                 0x00000000   Number         0  _printf_percent.o ABSOLUTE
+    ../clib/printf_percent.s                 0x00000000   Number         0  _printf_u.o ABSOLUTE
+    Lab5.c                                   0x00000000   Number         0  lab5.o ABSOLUTE
+    Nokia5110.c                              0x00000000   Number         0  nokia5110.o ABSOLUTE
+    PLL.c                                    0x00000000   Number         0  pll.o ABSOLUTE
+    alarm.c                                  0x00000000   Number         0  alarm.o ABSOLUTE
+    dc.s                                     0x00000000   Number         0  dc.o ABSOLUTE
+    friendlywriter.c                         0x00000000   Number         0  friendlywriter.o ABSOLUTE
+    startup.s                                0x00000000   Number         0  startup.o ABSOLUTE
+    uart.c                                   0x00000000   Number         0  uart.o ABSOLUTE
+    $v0                                      0x0000026c   Number         0  startup.o(RESET)
+    .ARM.Collect$$_printf_percent$$00000000  0x00000284   Section        0  _printf_percent.o(.ARM.Collect$$_printf_percent$$00000000)
+    .ARM.Collect$$_printf_percent$$0000000A  0x00000284   Section        6  _printf_u.o(.ARM.Collect$$_printf_percent$$0000000A)
+    .ARM.Collect$$_printf_percent$$00000017  0x0000028a   Section        4  _printf_percent_end.o(.ARM.Collect$$_printf_percent$$00000017)
+    .text                                    0x00000290   Section       48  startup.o(.text)
+    $v0                                      0x00000290   Number         0  startup.o(.text)
+    .text                                    0x000002c0   Section        0  noretval__2sprintf.o(.text)
+    .text                                    0x000002e8   Section        0  __printf.o(.text)
+    .text                                    0x00000350   Section        0  _printf_dec.o(.text)
+    .text                                    0x000003c8   Section        0  heapauxi.o(.text)
+    .text                                    0x000003ce   Section        0  _printf_intcommon.o(.text)
+    .text                                    0x00000480   Section        0  _printf_char_common.o(.text)
+    _printf_input_char                       0x00000481   Thumb Code    10  _printf_char_common.o(.text)
+    .text                                    0x000004b0   Section        0  _sputc.o(.text)
+    i.AlarmOff                               0x000004bc   Section        0  alarm.o(i.AlarmOff)
+    i.AlarmOn                                0x000004d4   Section        0  alarm.o(i.AlarmOn)
+    i.DAC_Out                                0x000004ec   Section        0  alarm.o(i.DAC_Out)
+    i.FriendlyWrite                          0x000004f8   Section        0  friendlywriter.o(i.FriendlyWrite)
+    i.InitializeAlarm                        0x00000510   Section        0  alarm.o(i.InitializeAlarm)
+    i.Nokia5110_Clear                        0x000005a8   Section        0  nokia5110.o(i.Nokia5110_Clear)
+    i.Nokia5110_Init                         0x000005c8   Section        0  nokia5110.o(i.Nokia5110_Init)
+    i.Nokia5110_OutChar                      0x00000724   Section        0  nokia5110.o(i.Nokia5110_OutChar)
+    i.Nokia5110_OutString                    0x0000075c   Section        0  nokia5110.o(i.Nokia5110_OutString)
+    i.Nokia5110_SetCursor                    0x00000772   Section        0  nokia5110.o(i.Nokia5110_SetCursor)
+    i.PLL_Init                               0x000007a4   Section        0  pll.o(i.PLL_Init)
+    i.Read                                   0x00000814   Section        0  friendlywriter.o(i.Read)
+    i.SysTick_Handler                        0x0000081c   Section        0  alarm.o(i.SysTick_Handler)
+    i.UART_Init                              0x00000858   Section        0  uart.o(i.UART_Init)
+    i.UART_NewDataAvailable                  0x000009bc   Section        0  uart.o(i.UART_NewDataAvailable)
+    i.UART_Read                              0x000009e8   Section        0  uart.o(i.UART_Read)
+    i.Write                                  0x00000a04   Section        0  friendlywriter.o(i.Write)
+    i.__main                                 0x00000a08   Section        0  lab5.o(i.__main)
+    i.lcdwrite                               0x00000aa0   Section        0  nokia5110.o(i.lcdwrite)
+    lcdwrite                                 0x00000aa1   Thumb Code    68  nokia5110.o(i.lcdwrite)
+    .constdata                               0x00000aec   Section       32  uart.o(.constdata)
+    .constdata                               0x00000b0c   Section      480  nokia5110.o(.constdata)
+    ASCII                                    0x00000b0c   Data         480  nokia5110.o(.constdata)
+    .constdata                               0x00000cec   Section      136  alarm.o(.constdata)
+    .constdata                               0x00000d74   Section       24  friendlywriter.o(.constdata)
+    .data                                    0x20000000   Section        4  uart.o(.data)
+    .data                                    0x20000004   Section        8  alarm.o(.data)
+    HEAP                                     0x20000010   Section        0  startup.o(HEAP)
+    STACK                                    0x20000010   Section     1024  startup.o(STACK)
+    HeapMem                                  0x20000010   Data           0  startup.o(HEAP)
+    StackMem                                 0x20000010   Data           0  startup.o(STACK)
+
+    Global Symbols
+
+    Symbol Name                              Value     Ov Type        Size  Object(Section)
+
+    BuildAttributes$$THM_ISAv4$E$P$D$K$B$S$7EM$VFPi3$EXTD16$VFPS$VFMA$PE$A:L22UL41UL21$X:L11$S22US41US21$IEEE1$IW$USESV6$~STKCKD$USESV7$~SHL$OSPACE$ROPI$EBA8$STANDARDLIB$REQ8$PRES8$EABIv2 0x00000000   Number         0  anon$$obj.o ABSOLUTE
+    __Vectors                                0x00000000   Data           0  startup.o(RESET)
+    _printf_post_padding                      - Undefined Weak Reference
+    _printf_pre_padding                       - Undefined Weak Reference
+    _printf_truncate_signed                   - Undefined Weak Reference
+    _printf_truncate_unsigned                 - Undefined Weak Reference
+    Reset_Handler                            0x0000026d   Thumb Code     0  startup.o(RESET)
+    NMI_Handler                              0x00000271   Thumb Code     2  startup.o(RESET)
+    HardFault_Handler                        0x00000273   Thumb Code     2  startup.o(RESET)
+    MemManage_Handler                        0x00000275   Thumb Code     2  startup.o(RESET)
+    BusFault_Handler                         0x00000277   Thumb Code     2  startup.o(RESET)
+    UsageFault_Handler                       0x00000279   Thumb Code     2  startup.o(RESET)
+    SVC_Handler                              0x0000027b   Thumb Code     2  startup.o(RESET)
+    DebugMon_Handler                         0x0000027d   Thumb Code     2  startup.o(RESET)
+    PendSV_Handler                           0x0000027f   Thumb Code     2  startup.o(RESET)
+    ADC0Seq0_Handler                         0x00000283   Thumb Code     0  startup.o(RESET)
+    ADC0Seq1_Handler                         0x00000283   Thumb Code     0  startup.o(RESET)
+    ADC0Seq2_Handler                         0x00000283   Thumb Code     0  startup.o(RESET)
+    ADC0Seq3_Handler                         0x00000283   Thumb Code     0  startup.o(RESET)
+    ADC1Seq0_Handler                         0x00000283   Thumb Code     0  startup.o(RESET)
+    ADC1Seq1_Handler                         0x00000283   Thumb Code     0  startup.o(RESET)
+    ADC1Seq2_Handler                         0x00000283   Thumb Code     0  startup.o(RESET)
+    ADC1Seq3_Handler                         0x00000283   Thumb Code     0  startup.o(RESET)
+    CAN0_Handler                             0x00000283   Thumb Code     0  startup.o(RESET)
+    CAN1_Handler                             0x00000283   Thumb Code     0  startup.o(RESET)
+    CAN2_Handler                             0x00000283   Thumb Code     0  startup.o(RESET)
+    Comp0_Handler                            0x00000283   Thumb Code     0  startup.o(RESET)
+    Comp1_Handler                            0x00000283   Thumb Code     0  startup.o(RESET)
+    Comp2_Handler                            0x00000283   Thumb Code     0  startup.o(RESET)
+    Ethernet_Handler                         0x00000283   Thumb Code     0  startup.o(RESET)
+    ExtBus_Handler                           0x00000283   Thumb Code     0  startup.o(RESET)
+    FPU_Handler                              0x00000283   Thumb Code     0  startup.o(RESET)
+    Fan0_Handler                             0x00000283   Thumb Code     0  startup.o(RESET)
+    FlashCtl_Handler                         0x00000283   Thumb Code     0  startup.o(RESET)
+    GPIOPortA_Handler                        0x00000283   Thumb Code     0  startup.o(RESET)
+    GPIOPortB_Handler                        0x00000283   Thumb Code     0  startup.o(RESET)
+    GPIOPortC_Handler                        0x00000283   Thumb Code     0  startup.o(RESET)
+    GPIOPortD_Handler                        0x00000283   Thumb Code     0  startup.o(RESET)
+    GPIOPortE_Handler                        0x00000283   Thumb Code     0  startup.o(RESET)
+    GPIOPortF_Handler                        0x00000283   Thumb Code     0  startup.o(RESET)
+    GPIOPortG_Handler                        0x00000283   Thumb Code     0  startup.o(RESET)
+    GPIOPortH_Handler                        0x00000283   Thumb Code     0  startup.o(RESET)
+    GPIOPortJ_Handler                        0x00000283   Thumb Code     0  startup.o(RESET)
+    GPIOPortK_Handler                        0x00000283   Thumb Code     0  startup.o(RESET)
+    GPIOPortL_Handler                        0x00000283   Thumb Code     0  startup.o(RESET)
+    GPIOPortM_Handler                        0x00000283   Thumb Code     0  startup.o(RESET)
+    GPIOPortN_Handler                        0x00000283   Thumb Code     0  startup.o(RESET)
+    GPIOPortP1_Handler                       0x00000283   Thumb Code     0  startup.o(RESET)
+    GPIOPortP2_Handler                       0x00000283   Thumb Code     0  startup.o(RESET)
+    GPIOPortP3_Handler                       0x00000283   Thumb Code     0  startup.o(RESET)
+    GPIOPortP4_Handler                       0x00000283   Thumb Code     0  startup.o(RESET)
+    GPIOPortP5_Handler                       0x00000283   Thumb Code     0  startup.o(RESET)
+    GPIOPortP6_Handler                       0x00000283   Thumb Code     0  startup.o(RESET)
+    GPIOPortP7_Handler                       0x00000283   Thumb Code     0  startup.o(RESET)
+    GPIOPortP_Handler                        0x00000283   Thumb Code     0  startup.o(RESET)
+    GPIOPortQ1_Handler                       0x00000283   Thumb Code     0  startup.o(RESET)
+    GPIOPortQ2_Handler                       0x00000283   Thumb Code     0  startup.o(RESET)
+    GPIOPortQ3_Handler                       0x00000283   Thumb Code     0  startup.o(RESET)
+    GPIOPortQ4_Handler                       0x00000283   Thumb Code     0  startup.o(RESET)
+    GPIOPortQ5_Handler                       0x00000283   Thumb Code     0  startup.o(RESET)
+    GPIOPortQ6_Handler                       0x00000283   Thumb Code     0  startup.o(RESET)
+    GPIOPortQ7_Handler                       0x00000283   Thumb Code     0  startup.o(RESET)
+    GPIOPortQ_Handler                        0x00000283   Thumb Code     0  startup.o(RESET)
+    GPIOPortR_Handler                        0x00000283   Thumb Code     0  startup.o(RESET)
+    GPIOPortS_Handler                        0x00000283   Thumb Code     0  startup.o(RESET)
+    Hibernate_Handler                        0x00000283   Thumb Code     0  startup.o(RESET)
+    I2C0_Handler                             0x00000283   Thumb Code     0  startup.o(RESET)
+    I2C1_Handler                             0x00000283   Thumb Code     0  startup.o(RESET)
+    I2C2_Handler                             0x00000283   Thumb Code     0  startup.o(RESET)
+    I2C3_Handler                             0x00000283   Thumb Code     0  startup.o(RESET)
+    I2C4_Handler                             0x00000283   Thumb Code     0  startup.o(RESET)
+    I2C5_Handler                             0x00000283   Thumb Code     0  startup.o(RESET)
+    I2S0_Handler                             0x00000283   Thumb Code     0  startup.o(RESET)
+    LPC0_Handler                             0x00000283   Thumb Code     0  startup.o(RESET)
+    PECI0_Handler                            0x00000283   Thumb Code     0  startup.o(RESET)
+    PWM0Fault_Handler                        0x00000283   Thumb Code     0  startup.o(RESET)
+    PWM0Generator0_Handler                   0x00000283   Thumb Code     0  startup.o(RESET)
+    PWM0Generator1_Handler                   0x00000283   Thumb Code     0  startup.o(RESET)
+    PWM0Generator2_Handler                   0x00000283   Thumb Code     0  startup.o(RESET)
+    PWM0Generator3_Handler                   0x00000283   Thumb Code     0  startup.o(RESET)
+    PWM1Fault_Handler                        0x00000283   Thumb Code     0  startup.o(RESET)
+    PWM1Generator0_Handler                   0x00000283   Thumb Code     0  startup.o(RESET)
+    PWM1Generator1_Handler                   0x00000283   Thumb Code     0  startup.o(RESET)
+    PWM1Generator2_Handler                   0x00000283   Thumb Code     0  startup.o(RESET)
+    PWM1Generator3_Handler                   0x00000283   Thumb Code     0  startup.o(RESET)
+    Quadrature0_Handler                      0x00000283   Thumb Code     0  startup.o(RESET)
+    Quadrature1_Handler                      0x00000283   Thumb Code     0  startup.o(RESET)
+    Quadrature2_Handler                      0x00000283   Thumb Code     0  startup.o(RESET)
+    SSI0_Handler                             0x00000283   Thumb Code     0  startup.o(RESET)
+    SSI1_Handler                             0x00000283   Thumb Code     0  startup.o(RESET)
+    SSI2_Handler                             0x00000283   Thumb Code     0  startup.o(RESET)
+    SSI3_Handler                             0x00000283   Thumb Code     0  startup.o(RESET)
+    SysCtl_Handler                           0x00000283   Thumb Code     0  startup.o(RESET)
+    Timer0A_Handler                          0x00000283   Thumb Code     0  startup.o(RESET)
+    Timer0B_Handler                          0x00000283   Thumb Code     0  startup.o(RESET)
+    Timer1A_Handler                          0x00000283   Thumb Code     0  startup.o(RESET)
+    Timer1B_Handler                          0x00000283   Thumb Code     0  startup.o(RESET)
+    Timer2A_Handler                          0x00000283   Thumb Code     0  startup.o(RESET)
+    Timer2B_Handler                          0x00000283   Thumb Code     0  startup.o(RESET)
+    Timer3A_Handler                          0x00000283   Thumb Code     0  startup.o(RESET)
+    Timer3B_Handler                          0x00000283   Thumb Code     0  startup.o(RESET)
+    Timer4A_Handler                          0x00000283   Thumb Code     0  startup.o(RESET)
+    Timer4B_Handler                          0x00000283   Thumb Code     0  startup.o(RESET)
+    Timer5A_Handler                          0x00000283   Thumb Code     0  startup.o(RESET)
+    Timer5B_Handler                          0x00000283   Thumb Code     0  startup.o(RESET)
+    UART0_Handler                            0x00000283   Thumb Code     0  startup.o(RESET)
+    UART1_Handler                            0x00000283   Thumb Code     0  startup.o(RESET)
+    UART2_Handler                            0x00000283   Thumb Code     0  startup.o(RESET)
+    UART3_Handler                            0x00000283   Thumb Code     0  startup.o(RESET)
+    UART4_Handler                            0x00000283   Thumb Code     0  startup.o(RESET)
+    UART5_Handler                            0x00000283   Thumb Code     0  startup.o(RESET)
+    UART6_Handler                            0x00000283   Thumb Code     0  startup.o(RESET)
+    UART7_Handler                            0x00000283   Thumb Code     0  startup.o(RESET)
+    USB0_Handler                             0x00000283   Thumb Code     0  startup.o(RESET)
+    WDT_Handler                              0x00000283   Thumb Code     0  startup.o(RESET)
+    WideTimer0A_Handler                      0x00000283   Thumb Code     0  startup.o(RESET)
+    WideTimer0B_Handler                      0x00000283   Thumb Code     0  startup.o(RESET)
+    WideTimer1A_Handler                      0x00000283   Thumb Code     0  startup.o(RESET)
+    WideTimer1B_Handler                      0x00000283   Thumb Code     0  startup.o(RESET)
+    WideTimer2A_Handler                      0x00000283   Thumb Code     0  startup.o(RESET)
+    WideTimer2B_Handler                      0x00000283   Thumb Code     0  startup.o(RESET)
+    WideTimer3A_Handler                      0x00000283   Thumb Code     0  startup.o(RESET)
+    WideTimer3B_Handler                      0x00000283   Thumb Code     0  startup.o(RESET)
+    WideTimer4A_Handler                      0x00000283   Thumb Code     0  startup.o(RESET)
+    WideTimer4B_Handler                      0x00000283   Thumb Code     0  startup.o(RESET)
+    WideTimer5A_Handler                      0x00000283   Thumb Code     0  startup.o(RESET)
+    WideTimer5B_Handler                      0x00000283   Thumb Code     0  startup.o(RESET)
+    uDMA_Error                               0x00000283   Thumb Code     0  startup.o(RESET)
+    uDMA_Handler                             0x00000283   Thumb Code     0  startup.o(RESET)
+    _printf_percent                          0x00000285   Thumb Code     0  _printf_percent.o(.ARM.Collect$$_printf_percent$$00000000)
+    _printf_u                                0x00000285   Thumb Code     0  _printf_u.o(.ARM.Collect$$_printf_percent$$0000000A)
+    _printf_percent_end                      0x0000028b   Thumb Code     0  _printf_percent_end.o(.ARM.Collect$$_printf_percent$$00000017)
+    DisableInterrupts                        0x00000291   Thumb Code     0  startup.o(.text)
+    EnableInterrupts                         0x00000295   Thumb Code     0  startup.o(.text)
+    StartCritical                            0x00000299   Thumb Code     0  startup.o(.text)
+    EndCritical                              0x000002a1   Thumb Code     0  startup.o(.text)
+    WaitForInterrupt                         0x000002a7   Thumb Code     0  startup.o(.text)
+    __user_initial_stackheap                 0x000002ab   Thumb Code     0  startup.o(.text)
+    __2sprintf                               0x000002c1   Thumb Code    34  noretval__2sprintf.o(.text)
+    __printf                                 0x000002e9   Thumb Code   104  __printf.o(.text)
+    _printf_int_dec                          0x00000351   Thumb Code   104  _printf_dec.o(.text)
+    __use_two_region_memory                  0x000003c9   Thumb Code     2  heapauxi.o(.text)
+    __rt_heap_escrow$2region                 0x000003cb   Thumb Code     2  heapauxi.o(.text)
+    __rt_heap_expand$2region                 0x000003cd   Thumb Code     2  heapauxi.o(.text)
+    _printf_int_common                       0x000003cf   Thumb Code   178  _printf_intcommon.o(.text)
+    _printf_char_common                      0x0000048b   Thumb Code    32  _printf_char_common.o(.text)
+    _sputc                                   0x000004b1   Thumb Code    10  _sputc.o(.text)
+    AlarmOff                                 0x000004bd   Thumb Code    18  alarm.o(i.AlarmOff)
+    AlarmOn                                  0x000004d5   Thumb Code    18  alarm.o(i.AlarmOn)
+    DAC_Out                                  0x000004ed   Thumb Code     8  alarm.o(i.DAC_Out)
+    FriendlyWrite                            0x000004f9   Thumb Code    24  friendlywriter.o(i.FriendlyWrite)
+    InitializeAlarm                          0x00000511   Thumb Code   126  alarm.o(i.InitializeAlarm)
+    Nokia5110_Clear                          0x000005a9   Thumb Code    32  nokia5110.o(i.Nokia5110_Clear)
+    Nokia5110_Init                           0x000005c9   Thumb Code   312  nokia5110.o(i.Nokia5110_Init)
+    Nokia5110_OutChar                        0x00000725   Thumb Code    52  nokia5110.o(i.Nokia5110_OutChar)
+    Nokia5110_OutString                      0x0000075d   Thumb Code    22  nokia5110.o(i.Nokia5110_OutString)
+    Nokia5110_SetCursor                      0x00000773   Thumb Code    48  nokia5110.o(i.Nokia5110_SetCursor)
+    PLL_Init                                 0x000007a5   Thumb Code   108  pll.o(i.PLL_Init)
+    Read                                     0x00000815   Thumb Code     6  friendlywriter.o(i.Read)
+    SysTick_Handler                          0x0000081d   Thumb Code    46  alarm.o(i.SysTick_Handler)
+    UART_Init                                0x00000859   Thumb Code   334  uart.o(i.UART_Init)
+    UART_NewDataAvailable                    0x000009bd   Thumb Code    34  uart.o(i.UART_NewDataAvailable)
+    UART_Read                                0x000009e9   Thumb Code    20  uart.o(i.UART_Read)
+    Write                                    0x00000a05   Thumb Code     4  friendlywriter.o(i.Write)
+    __main                                   0x00000a09   Thumb Code   126  lab5.o(i.__main)
+    UART_BASE                                0x00000aec   Data          32  uart.o(.constdata)
+    NUMBER_OF_DATA_POINTS                    0x00000cec   Data           2  alarm.o(.constdata)
+    SineWave                                 0x00000cee   Data         128  alarm.o(.constdata)
+    period                                   0x00000d70   Data           4  alarm.o(.constdata)
+    GPIO_BASE                                0x00000d74   Data          24  friendlywriter.o(.constdata)
+    selected_UART                            0x20000000   Data           4  uart.o(.data)
+    next                                     0x20000004   Data           4  alarm.o(.data)
+    outmask                                  0x20000008   Data           4  alarm.o(.data)
+
+
+
+==============================================================================
+
+Memory Map of the image
+
+  Image Entry point : 0x0000026d
+
+  Load Region LR_1 (Base: 0x00000000, Size: 0x00000d98, Max: 0xffffffff, ABSOLUTE)
+
+    Execution Region ER_RO (Exec base: 0x00000000, Load base: 0x00000000, Size: 0x00000d8c, Max: 0xffffffff, ABSOLUTE)
+
+    Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
+
+    0x00000000   0x00000000   0x00000284   Code   RO            3  * RESET               startup.o
+    0x00000284   0x00000284   0x00000000   Code   RO          258    .ARM.Collect$$_printf_percent$$00000000  c_w.l(_printf_percent.o)
+    0x00000284   0x00000284   0x00000006   Code   RO          257    .ARM.Collect$$_printf_percent$$0000000A  c_w.l(_printf_u.o)
+    0x0000028a   0x0000028a   0x00000004   Code   RO          267    .ARM.Collect$$_printf_percent$$00000017  c_w.l(_printf_percent_end.o)
+    0x0000028e   0x0000028e   0x00000002   PAD
+    0x00000290   0x00000290   0x00000030   Code   RO            4    .text               startup.o
+    0x000002c0   0x000002c0   0x00000028   Code   RO          231    .text               c_w.l(noretval__2sprintf.o)
+    0x000002e8   0x000002e8   0x00000068   Code   RO          233    .text               c_w.l(__printf.o)
+    0x00000350   0x00000350   0x00000078   Code   RO          235    .text               c_w.l(_printf_dec.o)
+    0x000003c8   0x000003c8   0x00000006   Code   RO          259    .text               c_w.l(heapauxi.o)
+    0x000003ce   0x000003ce   0x000000b2   Code   RO          261    .text               c_w.l(_printf_intcommon.o)
+    0x00000480   0x00000480   0x00000030   Code   RO          263    .text               c_w.l(_printf_char_common.o)
+    0x000004b0   0x000004b0   0x0000000a   Code   RO          265    .text               c_w.l(_sputc.o)
+    0x000004ba   0x000004ba   0x00000002   PAD
+    0x000004bc   0x000004bc   0x00000018   Code   RO          157    i.AlarmOff          alarm.o
+    0x000004d4   0x000004d4   0x00000018   Code   RO          158    i.AlarmOn           alarm.o
+    0x000004ec   0x000004ec   0x0000000c   Code   RO          159    i.DAC_Out           alarm.o
+    0x000004f8   0x000004f8   0x00000018   Code   RO          197    i.FriendlyWrite     friendlywriter.o
+    0x00000510   0x00000510   0x00000098   Code   RO          160    i.InitializeAlarm   alarm.o
+    0x000005a8   0x000005a8   0x00000020   Code   RO          102    i.Nokia5110_Clear   nokia5110.o
+    0x000005c8   0x000005c8   0x0000015c   Code   RO          104    i.Nokia5110_Init    nokia5110.o
+    0x00000724   0x00000724   0x00000038   Code   RO          105    i.Nokia5110_OutChar  nokia5110.o
+    0x0000075c   0x0000075c   0x00000016   Code   RO          106    i.Nokia5110_OutString  nokia5110.o
+    0x00000772   0x00000772   0x00000030   Code   RO          108    i.Nokia5110_SetCursor  nokia5110.o
+    0x000007a2   0x000007a2   0x00000002   PAD
+    0x000007a4   0x000007a4   0x00000070   Code   RO           12    i.PLL_Init          pll.o
+    0x00000814   0x00000814   0x00000006   Code   RO          198    i.Read              friendlywriter.o
+    0x0000081a   0x0000081a   0x00000002   PAD
+    0x0000081c   0x0000081c   0x0000003c   Code   RO          161    i.SysTick_Handler   alarm.o
+    0x00000858   0x00000858   0x00000164   Code   RO           61    i.UART_Init         uart.o
+    0x000009bc   0x000009bc   0x0000002c   Code   RO           62    i.UART_NewDataAvailable  uart.o
+    0x000009e8   0x000009e8   0x0000001c   Code   RO           63    i.UART_Read         uart.o
+    0x00000a04   0x00000a04   0x00000004   Code   RO          199    i.Write             friendlywriter.o
+    0x00000a08   0x00000a08   0x00000098   Code   RO           28    i.__main            lab5.o
+    0x00000aa0   0x00000aa0   0x0000004c   Code   RO          109    i.lcdwrite          nokia5110.o
+    0x00000aec   0x00000aec   0x00000020   Data   RO           65    .constdata          uart.o
+    0x00000b0c   0x00000b0c   0x000001e0   Data   RO          110    .constdata          nokia5110.o
+    0x00000cec   0x00000cec   0x00000088   Data   RO          162    .constdata          alarm.o
+    0x00000d74   0x00000d74   0x00000018   Data   RO          200    .constdata          friendlywriter.o
+
+
+    Execution Region ER_RW (Exec base: 0x20000000, Load base: 0x00000d8c, Size: 0x0000000c, Max: 0xffffffff, ABSOLUTE)
+
+    Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
+
+    0x20000000   0x00000d8c   0x00000004   Data   RW           66    .data               uart.o
+    0x20000004   0x00000d90   0x00000008   Data   RW          163    .data               alarm.o
+
+
+    Execution Region ER_ZI (Exec base: 0x2000000c, Load base: 0x00000d98, Size: 0x00000404, Max: 0xffffffff, ABSOLUTE)
+
+    Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
+
+    0x2000000c   0x00000d98   0x00000004   PAD
+    0x20000010        -       0x00000000   Zero   RW            2    HEAP                startup.o
+    0x20000010        -       0x00000400   Zero   RW            1    STACK               startup.o
+
+
+==============================================================================
+
+Image component sizes
+
+
+      Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
+
+       272         56        136          8          0       2920   alarm.o
+        34          0         24          0          0       2063   friendlywriter.o
+       152         26          0          0          0       3989   lab5.o
+       582         48        480          0          0       5103   nokia5110.o
+       112          4          0          0          0       1879   pll.o
+       692        632          0          0       1024        988   startup.o
+       428         40         32          4          0       2598   uart.o
+
+    ----------------------------------------------------------------------
+      2276        806        672         12       1028      19540   Object Totals
+         0          0          0          0          0          0   (incl. Generated)
+         4          0          0          0          4          0   (incl. Padding)
+
+    ----------------------------------------------------------------------
+
+      Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Library Member Name
+
+       104          0          0          0          0         84   __printf.o
+        48          6          0          0          0         96   _printf_char_common.o
+       120         16          0          0          0         92   _printf_dec.o
+       178          0          0          0          0         88   _printf_intcommon.o
+         0          0          0          0          0          0   _printf_percent.o
+         4          0          0          0          0          0   _printf_percent_end.o
+         6          0          0          0          0          0   _printf_u.o
+        10          0          0          0          0         68   _sputc.o
+         6          0          0          0          0        152   heapauxi.o
+        40          6          0          0          0         84   noretval__2sprintf.o
+
+    ----------------------------------------------------------------------
+       520         28          0          0          0        664   Library Totals
+         4          0          0          0          0          0   (incl. Padding)
+
+    ----------------------------------------------------------------------
+
+      Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Library Name
+
+       516         28          0          0          0        664   c_w.l
+
+    ----------------------------------------------------------------------
+       520         28          0          0          0        664   Library Totals
+
+    ----------------------------------------------------------------------
+
+==============================================================================
+
+
+      Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
+
+      2796        834        672         12       1028      18392   Grand Totals
+      2796        834        672         12       1028      18392   ELF Image Totals
+      2796        834        672         12          0          0   ROM Totals
+
+==============================================================================
+
+    Total RO  Size (Code + RO Data)                 3468 (   3.39kB)
+    Total RW  Size (RW Data + ZI Data)              1040 (   1.02kB)
+    Total ROM Size (Code + RO Data + RW Data)       3480 (   3.40kB)
+
+==============================================================================
+

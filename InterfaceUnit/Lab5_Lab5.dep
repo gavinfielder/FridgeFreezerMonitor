@@ -1,0 +1,33 @@
+Dependencies for Project 'Lab5', Target 'Lab5': (DO NOT MODIFY !)
+F (.\startup.s)(0x5ABA88CA)(--cpu Cortex-M4.fp --pd "__EVAL SETA 1" -g --apcs=interwork -I.\RTE\_Lab5-I"E:\Program Files\Keil\ARM\PACK\ARM\CMSIS\5.1.1\CMSIS\Include"-I"E:\Program Files\Keil\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123"--pd "__UVISION_VERSION SETA 524" --pd "_RTE_ SETA 1" --pd "TM4C123GH6PM SETA 1"--list .\startup.lst --xref -o .\startup.o --depend .\startup.d)
+F (.\PLL.c)(0x5ABA9350)(-c --cpu Cortex-M4.fp -D__EVAL -g -O0 --apcs=interwork --split_sections --signed_chars -I .. -I ..\..\..-I.\RTE\_Lab5-I"E:\Program Files\Keil\ARM\PACK\ARM\CMSIS\5.1.1\CMSIS\Include"-I"E:\Program Files\Keil\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123"-D__UVISION_VERSION="524" -D_RTE_ -DTM4C123GH6PM -Drvmdk -DPART_LM4F120H5QR-o .\pll.o --omf_browse .\pll.crf --depend .\pll.d)
+I (PLL.h)(0x5AE8EE08)
+F (.\tm4c123gh6pm.h)(0x5ABA88CA)()
+F (.\Lab5.c)(0x5AF3C36B)(-c --cpu Cortex-M4.fp -D__EVAL -g -O0 --apcs=interwork --split_sections --signed_chars -I .. -I ..\..\..-I.\RTE\_Lab5-I"E:\Program Files\Keil\ARM\PACK\ARM\CMSIS\5.1.1\CMSIS\Include"-I"E:\Program Files\Keil\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123"-D__UVISION_VERSION="524" -D_RTE_ -DTM4C123GH6PM -Drvmdk -DPART_LM4F120H5QR-o .\lab5.o --omf_browse .\lab5.crf --depend .\lab5.d)
+I (tm4c123gh6pm.h)(0x5ABA88CA)
+I (PLL.h)(0x5AE8EE08)
+I (E:\Program Files\Keil\ARM\ARMCC\include\stdint.h)(0x588C5634)
+I (Nokia5110.h)(0x5ACD10B8)
+I (alarm.h)(0x5AE8EA2A)
+I (uart.h)(0x5AF3B326)
+I (E:\Program Files\Keil\ARM\ARMCC\include\stdio.h)(0x588C5634)
+F (.\uart.c)(0x5AF3B1CE)(-c --cpu Cortex-M4.fp -D__EVAL -g -O0 --apcs=interwork --split_sections --signed_chars -I .. -I ..\..\..-I.\RTE\_Lab5-I"E:\Program Files\Keil\ARM\PACK\ARM\CMSIS\5.1.1\CMSIS\Include"-I"E:\Program Files\Keil\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123"-D__UVISION_VERSION="524" -D_RTE_ -DTM4C123GH6PM -Drvmdk -DPART_LM4F120H5QR-o .\uart.o --omf_browse .\uart.crf --depend .\uart.d)
+I (E:\Program Files\Keil\ARM\ARMCC\include\stdint.h)(0x588C5634)
+I (tm4c123gh6pm.h)(0x5ABA88CA)
+I (E:\Program Files\Keil\ARM\ARMCC\include\stdio.h)(0x588C5634)
+I (E:\Program Files\Keil\ARM\ARMCC\include\stdlib.h)(0x588C5634)
+I (uart.h)(0x5AF3B326)
+I (friendlywriter.h)(0x5AF3B1AF)
+F (.\uart.h)(0x5AF3B326)()
+F (.\Nokia5110.c)(0x5AF3AFA2)(-c --cpu Cortex-M4.fp -D__EVAL -g -O0 --apcs=interwork --split_sections --signed_chars -I .. -I ..\..\..-I.\RTE\_Lab5-I"E:\Program Files\Keil\ARM\PACK\ARM\CMSIS\5.1.1\CMSIS\Include"-I"E:\Program Files\Keil\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123"-D__UVISION_VERSION="524" -D_RTE_ -DTM4C123GH6PM -Drvmdk -DPART_LM4F120H5QR-o .\nokia5110.o --omf_browse .\nokia5110.crf --depend .\nokia5110.d)
+I (Nokia5110.h)(0x5ACD10B8)
+F (.\Nokia5110.h)(0x5ACD10B8)()
+F (.\alarm.c)(0x5AE8F132)(-c --cpu Cortex-M4.fp -D__EVAL -g -O0 --apcs=interwork --split_sections --signed_chars -I .. -I ..\..\..-I.\RTE\_Lab5-I"E:\Program Files\Keil\ARM\PACK\ARM\CMSIS\5.1.1\CMSIS\Include"-I"E:\Program Files\Keil\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123"-D__UVISION_VERSION="524" -D_RTE_ -DTM4C123GH6PM -Drvmdk -DPART_LM4F120H5QR-o .\alarm.o --omf_browse .\alarm.crf --depend .\alarm.d)
+I (E:\Program Files\Keil\ARM\ARMCC\include\stdint.h)(0x588C5634)
+I (tm4c123gh6pm.h)(0x5ABA88CA)
+I (alarm.h)(0x5AE8EA2A)
+F (.\alarm.h)(0x5AE8EA2A)()
+F (.\friendlywriter.c)(0x5AF3B1AA)(-c --cpu Cortex-M4.fp -D__EVAL -g -O0 --apcs=interwork --split_sections --signed_chars -I .. -I ..\..\..-I.\RTE\_Lab5-I"E:\Program Files\Keil\ARM\PACK\ARM\CMSIS\5.1.1\CMSIS\Include"-I"E:\Program Files\Keil\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123"-D__UVISION_VERSION="524" -D_RTE_ -DTM4C123GH6PM -Drvmdk -DPART_LM4F120H5QR-o .\friendlywriter.o --omf_browse .\friendlywriter.crf --depend .\friendlywriter.d)
+I (E:\Program Files\Keil\ARM\ARMCC\include\stdint.h)(0x588C5634)
+I (friendlywriter.h)(0x5AF3B1AF)
+F (.\friendlywriter.h)(0x5AF3B1AF)()

@@ -1,0 +1,29 @@
+// uart.h
+// Contains headers for UART functions
+// Runs on TM4C123
+// Program written by: Gavin Fielder
+// Date Created: 
+// Last Modified:
+// Hardware connections:
+
+
+#ifndef UART_H
+#define UART_H
+
+#include "stdint.h"
+
+
+//Initializes UART transmission on PE5
+//baud rate 9600 at 80 MHz clock
+void UART_Init(void);
+
+//Returns 1 if data exists in FIFO, 0 otherwise
+uint8_t UART_NewDataAvailable(void);
+
+//Extracts data from FIFO
+uint8_t UART_Read(void);
+
+char UART_Char_In(void);
+
+
+#endif

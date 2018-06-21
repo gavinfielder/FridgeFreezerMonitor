@@ -1,0 +1,10 @@
+.\lab6.o: Lab6.c
+.\lab6.o: PLL.h
+.\lab6.o: ADC.h
+.\lab6.o: tm4c123gh6pm.h
+.\lab6.o: Lab6peripherals.h
+.\lab6.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\lab6.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
+.\lab6.o: uart.h
+.\lab6.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\lab6.o: doorSwitch.h
