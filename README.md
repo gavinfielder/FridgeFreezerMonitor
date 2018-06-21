@@ -17,7 +17,8 @@ This can be adapted into two categories of product:
 In either case, it provides a layer of security against food spoilage by alerting the user when the integrity of the refrigerator system is compromised. 
 
 As this is a reasonably simple device that any company with investment in electrical engineers could produce, the second category of product is more likely to attract customers. 
-Related Work
+
+## Related Work
 
 Similar products already exist. Our implementation is neither a new product nor an improvement. Since, ultimately, this device is a security feature, the primary way our product can be competitive in the marketplace is in its reliability. In this way, simplicity is its best feature. 
 
