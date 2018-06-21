@@ -1,5 +1,5 @@
 
-# FridgeFreezerMonitor
+# Fridge and Freezer Monitoring System
 
 ![Results 2](https://i.imgur.com/K6dCP83.jpg?1)
 
